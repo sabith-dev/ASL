@@ -30,3 +30,6 @@ ai/outputs/
 # ===== OS =====
 .DS_Store
 Thumbs.db
+# ML model files
+*.pkl
+models/
