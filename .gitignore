@@ -1,0 +1,32 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# ===== Django =====
+backend/staticfiles/
+*.log
+
+# ===== Node / React =====
+node_modules/
+frontend/dist/
+frontend/dev-server.log
+
+# ===== Data & runtime =====
+dataset/raw/
+ai/outputs/
+*.pkl.bak
+
+# Kept intentionally for reproducibility:
+#   models/*.pkl           trained models
+#   models/*.task          MediaPipe model
+
+# ===== Env =====
+.env
+.env.local
+
+# ===== OS =====
+.DS_Store
+Thumbs.db

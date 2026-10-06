@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-base-950 text-white font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(124, 108, 255, 0.5);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0b0b18;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #7c6cff, #22d3ee);
+    border-radius: 8px;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-3xl;
+  }
+
+  .glass-strong {
+    @apply bg-base-800/70 backdrop-blur-2xl border border-white/[0.1] rounded-3xl shadow-card;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #7c6cff 0%, #22d3ee 50%, #ff5fa2 100%);
+  }
+
+  .text-gradient-soft {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #a5a0ff 0%, #67e8f9 50%, #ffb0d4 100%);
+  }
+
+  .btn-gradient {
+    background-image: linear-gradient(135deg, #7c6cff 0%, #22d3ee 50%, #ff5fa2 100%);
+    @apply text-white font-semibold transition-all duration-300;
+  }
+
+  .btn-gradient:hover {
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -10px rgba(124, 108, 255, 0.7);
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium;
+    background: rgba(124, 108, 255, 0.12);
+    border: 1px solid rgba(124, 108, 255, 0.3);
+  }
+
+  .hairline {
+    @apply border border-white/[0.06];
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 5;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(124, 108, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 108, 255, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+  }
+
+  .perspective {
+    perspective: 1200px;
+  }
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(#0b0b18, #0b0b18) padding-box,
+    linear-gradient(135deg, #7c6cff, #22d3ee, #ff5fa2, #7c6cff) border-box;
+  border: 1.5px solid transparent;
+  background-size: 100% 100%, 300% 300%;
+  animation: borderFlow 8s linear infinite;
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+  50% { background-position: 0% 0%, 100% 100%, 0% 0%; }
+  100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 14s linear infinite;
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+.animate-float-y {
+  animation: floatY 5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.animate-blink {
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+/* Recording pulse */
+.recording-pulse {
+  animation: pulseRing 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(255, 95, 162, 0.6); }
+  70% { box-shadow: 0 0 0 22px rgba(255, 95, 162, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 95, 162, 0); }
+}
+
+.video-feed {
+  transform: scaleX(-1);
+}
+
+.tick-item {
+  transition: all 0.15s ease;
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}

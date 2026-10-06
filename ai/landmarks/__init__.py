@@ -1,0 +1,1 @@
+"""MediaPipe landmark capture for the desktop pipeline."""

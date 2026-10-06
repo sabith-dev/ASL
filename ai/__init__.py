@@ -1,0 +1,1 @@
+"""Shared entry point for all ASCII-pipeline packages under ``ai/``."""
